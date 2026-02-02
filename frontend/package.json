@@ -14,6 +14,7 @@
     "@tanstack/react-query": "^5.90.20",
     "@tanstack/react-router": "^1.157.18",
     "@tanstack/react-router-devtools": "^1.157.18",
+    "dotenv": "^17.2.3",
     "lint-staged": "^16.2.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
@@ -21,7 +22,9 @@
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@tanstack/eslint-plugin-query": "^5.91.4",
-    "@types/node": "^24.10.1",
+    "@tanstack/router-cli": "^1.157.18",
+    "@tanstack/router-plugin": "^1.157.18",
+    "@types/node": "^25.2.0",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
@@ -33,7 +36,8 @@
     "prettier": "3.8.1",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "vite-plugin-dotenvx": "^0.1.1"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"

@@ -22,7 +22,28 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@_/*": ["src/*"],
+      "@_/shared/*": ["src/shared/*"],
+      "@_/pages/*": ["src/pages/*"],
+      "@_/components/*": ["src/components/*"],
+      "@_/utils/*": ["src/utils/*"],
+      "@_/assets/*": ["src/assets/*"],
+      "@_/services/*": ["src/services/*"],
+      "@_/store/*": ["src/store/*"],
+      "@_/routes/*": ["src/routes/*"],
+      "@_/hooks/*": ["src/hooks/*"],
+      "@_/styles/*": ["src/styles/*"],
+      "@_/types/*": ["src/types/*"],
+      "@_/config/*": ["src/config/*"],
+      "@_/lib/utils/*": ["src/lib/utils/*"],
+      "@_/data/*": ["src/data/*"],
+      "@_/stores/*": ["src/stores/*"],
+      "@_/storage/*": ["src/storage/*"],
+      "@_/api/*": ["src/api/*"]
+    }
   },
   "include": ["src"]
 }
