@@ -1,5 +1,6 @@
-#To install package: yarn install
-#To run the application: yarn dev
+To install package: yarn install
+
+To run the application: yarn dev
 
 Documents:
 - Typescript: https://www.typescriptlang.org/docs/
