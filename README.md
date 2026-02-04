@@ -1,4 +1,5 @@
-To install package: yarn install
+FrontEnd:<br />
+To install package: yarn install <br />
 
 To run the application: yarn dev
 
@@ -13,6 +14,6 @@ Documents:
 - Husky: https://typicode.github.io/husky/
 - Prettier: https://prettier.io/docs/install
 - lint-staged: https://www.npmjs.com/package/lint-staged
-
+- FastAPI: https://fastapi.tiangolo.com/virtual-environments/#create-a-project
 
 
