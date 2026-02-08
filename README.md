@@ -1,7 +1,10 @@
-FrontEnd:<br />
-To install package: yarn install <br />
-
-To run the application: yarn dev
+FrontEnd:<br/>
+To install package: yarn install <br/>
+To run the application: yarn dev <br/>
+BackEnd:<br/>
+To run the application:<br/>
+1. venv/Scripts/Activate <br/>
+2. fastapi dev main.py <br/>
 
 Documents:
 - Typescript: https://www.typescriptlang.org/docs/
