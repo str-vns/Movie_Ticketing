@@ -1,9 +1,10 @@
 from decouple import config
+from pydantic_settings import BaseSettings
 
-class Settings:
-    PROJECT_NAME: str = "BE MOVIE_TICKET"
-    VERSION: str = "1.0.0"
-    DATABASE: str = config("DATABASE")
-    DEFAULT_LANG: str = "en"
+class Settings(BaseSettings):
+      app_name: str = "Movie Ticketing API"
+    #   admin_email: str
+      items_per_user: int = 50
+    
     
 settings = Settings()
