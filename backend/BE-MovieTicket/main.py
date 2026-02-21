@@ -7,7 +7,7 @@ from app.core import config, security, limiter
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
-    # dependencies=[Depends(limiter.total_limiter), Depends(limiter.ip_limiter)]
+    dependencies=[Depends(limiter.total_limiter), Depends(limiter.ip_limiter)]
 )
 
 @lru_cache
