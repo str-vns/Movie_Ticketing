@@ -1,2 +1,7 @@
 uvicorn app.main:app --host 127.0.0.1 --port 80
 fastapi dev main.py
+
+docker run -d --name fastapi-conatiner -p 8000:80 fastapi-app
+docker build -t movieticket .
+docker run -p 8000:8000 fastapi-app
+pip freeze > requirements.txt
