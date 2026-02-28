@@ -14,6 +14,9 @@ class UserUpdate(UserBase):
     pfp: Optional[str] = None
     email: Optional[str] = None 
     is_active: Optional[bool] = None
+class LoginUser(BaseModel):
+    email: EmailStr
+    password: str
 class User(UserBase):
     id: str
     is_active: bool

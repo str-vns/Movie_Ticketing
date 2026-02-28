@@ -3,6 +3,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.base import BaseHTTPMiddleware
 from dotenv import load_dotenv
+from cryptography.fernet import Fernet
 
 load_dotenv()
 
@@ -16,6 +17,7 @@ origins = [
 ALLOW_METHODS = ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"]
 ALLOW_HEADERS = ["Authorization", "Content-type", "Accept", "Cookie"]
 
+SECRET_KEY = os.getenv("FASTAPI_AES_KEY", "AES_KEY")
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
         response = await call_next(request)
@@ -39,3 +41,15 @@ def setup_http(app: FastAPI):
     app.add_middleware(
         SecurityHeadersMiddleware,
     )
+    
+f = Fernet(SECRET_KEY)
+
+def encrypt_data(data: str) -> str:
+    
+    encrypted_data = f.encrypt(data.encode())
+    return encrypted_data.decode()
+
+def decrypt_data(encrypted_data: str) -> str:
+    decrypted_data = f.decrypt(encrypted_data.encode())
+    print("Decrypted Data:", decrypted_data)
+    return decrypted_data.decode()
