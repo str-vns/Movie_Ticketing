@@ -6,7 +6,6 @@ class UserLogin(BaseModel):
       email: EmailStr
       password: str
 
-
 class Token(BaseModel):
     User: dict = {
         "id": str | None,
@@ -22,3 +21,8 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     email: EmailStr | None = None
+
+class OTPRequest(BaseModel):
+    email: EmailStr
+    otp: str
+    
