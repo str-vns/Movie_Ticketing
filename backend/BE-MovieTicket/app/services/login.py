@@ -57,9 +57,6 @@ def authenticate_user(login_data: schema_login.UserLogin, db: Session):
             headers={"WWW-Authenticate": "Bearer"},
         )
 
-    totp = pyotp.TOTP(secret, digits=6, interval=interval)
-    return totp.now()
-
 def OTP_gen(email_input, db):
     otp_secret = generate_otp_secret()
     email = email_input.email
@@ -100,3 +97,50 @@ def OTP_Verify(otp_input, db):
     db.commit()
   
     return {"Message:"" SuccessFully login"}
+
+def Forget_password(email_input, db):
+    try: 
+     authUser = db.query(models.Users).filter(models.Users.email == email_input.email).first()
+     if authUser is None:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                  detail="Invalid Email address")
+     encrpyEmail = encrypt_data(authUser.email)
+     access_token = auth.create_access_token(
+           data={"sub": encrpyEmail},
+           expires_delta=timedelta(minutes=10),
+       )
+    
+    
+     forget_url_link = f"{access_token}"
+    
+     emailG.send_email(authUser.email, "Your Reset Link", f"Your Link is: {forget_url_link}")    
+    
+     
+     return {"send email successfully"}
+    except Exception as e:
+           raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+              detail=f"Something Unexpected, Server Error {e}")
+    
+def reset_password(forgotPass, db, Cu):
+    
+    print(f"c{Cu.id}")
+    if (forgotPass.new_password != forgotPass.confirm_password):
+       raise HTTPException(
+        status_code=400,
+        detail="New Password and Confirm Password are not same"
+    ) 
+    hashed_pass = password_hash.hash(forgotPass.confirm_password)
+    user = db.query(models.Users).filter(models.Users.id == Cu.id).first()   
+    
+    if not user:
+       raise HTTPException(
+        status_code=400,
+        detail="This User does not Exist"
+    ) 
+    
+    user.password = hashed_pass
+    db.commit()
+    
+        
+    return {"message": "Password updated successfully"}    
+    

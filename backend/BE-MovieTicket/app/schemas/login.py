@@ -26,3 +26,6 @@ class OTPRequest(BaseModel):
     email: EmailStr
     otp: str
     
+class RESETPass(BaseModel):
+      new_password:str
+      confirm_password:str

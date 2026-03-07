@@ -24,6 +24,7 @@ def send_email(recipient_email: str, subject: str, body: str):
             server.starttls()
             server.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
             server.sendmail(SENDER_EMAIL, [recipient_email], mas.as_string())
+        return {"Message Sent Successfully"}
     except Exception as e:
         return {"error": str(e)}
             
