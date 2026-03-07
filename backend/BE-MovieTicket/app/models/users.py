@@ -12,6 +12,7 @@ class Users(Base):
     firstName = Column(String, nullable=False, index=True)
     lastName = Column(String, nullable=False, index=True)
     pfp = Column(String,nullable=True)
+    role = Column(String, default="consumer")
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     
