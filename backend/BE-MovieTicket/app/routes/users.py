@@ -29,3 +29,15 @@ def delete_users(uId: UUID, db: Session = Depends(get_db), current_user: model_u
 @router.get("/{uId}/profile", response_model=schema_users.User)
 def profile_users(uId: UUID, db: Session = Depends(get_db), current_user: model_users.Users = Depends(AUTH.get_current_user)):
     return services_users.profile(uId, db)
+
+@router.post("/payOption",  response_model=schema_users.PaymentCreate)
+def create_payOp(create_pay: schema_users.PaymentCreate, db: Session = Depends(get_db), current_user: model_users.Users = Depends(AUTH.get_current_user)):
+    return services_users.create_payOp(create_pay, db)
+
+@router.delete("/payOption/{uId}")
+def delete_payOP(uId: UUID, db: Session = Depends(get_db)):
+    return services_users.delete_payOp(uId, db)
+
+@router.get("/payOption/{uId}")
+def get_payOp(uId: UUID, db: Session = Depends(get_db), skip: int=0, limit: int = 10):
+    return services_users.get_payOp(uId, db, skip, limit)
