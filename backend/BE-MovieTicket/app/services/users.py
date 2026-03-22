@@ -133,20 +133,6 @@ def delete_payOp(uId: UUID, db:Session):
     db.commit()
     return {"Message": "Delete Payment Option Successfully" }
 
-    updatePayOP = db.query(models.PaymentOption).filter(models.PaymentOption.id == uId).first()
-    update_data = {
-        k: v for k, v in updatePayOP.model_dump(exclude_unset=True).items()
-        if v not in (None, "",'')
-    }
-    
-    for key, value in update_data.items():
-        setattr(updatePayOP, key, value)
-        
-    db.commit()
-    db.refresh(updatePayOP)
-    jsonRes = jsonable_encoder(updatePayOP)
-    return JSONResponse(jsonRes)
-
 def get_payOp(uId:UUID, db:Session, skip, limit):
     userPayOp = db.query(models.PaymentOption).filter(models.PaymentOption.userId == uId).offset(skip).limit(limit).all()
     validation.ExistingUserValidation(userPayOp, "DE")

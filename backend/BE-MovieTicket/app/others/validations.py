@@ -32,3 +32,16 @@ def paymentOpValidation(pay_user, type):
             detail="Payment does Exist"
         )
 
+def ExsistingMoviesValidation(existing_movie, type):
+    
+    if not existing_movie and type == "DE":
+        raise HTTPException(
+            status_code=400,
+            detail="Movies doesn't exist"
+        )
+        
+    elif existing_movie and type == "D":
+        raise HTTPException(
+            status_code=400,
+            detail="Movies does Exist"
+        )
