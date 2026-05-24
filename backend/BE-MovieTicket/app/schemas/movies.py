@@ -11,7 +11,6 @@ class MovieSchedBase(BaseModel):
 class MovieSchedCreate(MovieSchedBase):
       available_seat: int
       total_seat: int
-      room_info: str
       movieId: str
       cinemaId: str
       date: str
@@ -19,7 +18,6 @@ class MovieSchedCreate(MovieSchedBase):
 class MoviesSchedUpdate(MovieSchedCreate):
     available_seat: Optional[int] = None
     total_seat: Optional[int] = None
-    room_info: Optional[str] = None
     start_time: Optional[str] = None 
     end_time: Optional[str] = None
     date: Optional[str] = None
@@ -31,6 +29,7 @@ class MovieScheds(MovieSchedBase):
     movieId: UUID
     cinemaId: UUID
     created_at: datetime
+    delete_exp: datetime
     is_delete: bool
     class Config:
         from_attributes = True
@@ -55,6 +54,7 @@ class MoviesDelete(BaseModel):
 class MoviesOut(MoviesCreate):
     id: UUID
     created_at: datetime
+    delete_exp: datetime
     is_delete: bool
     class Config:
         from_attributes = True

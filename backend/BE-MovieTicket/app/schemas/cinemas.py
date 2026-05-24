@@ -22,6 +22,7 @@ class CinemasDelete(BaseModel):
 class CinemasOut(CinemasCreate):
     id: str
     created_at: datetime
+    delete_exp: datetime
     is_delete: bool
     class Config:
         from_attributes = True

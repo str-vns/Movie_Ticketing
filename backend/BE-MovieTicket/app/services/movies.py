@@ -68,7 +68,6 @@ def create_movieSched(movies_data: MSchemas.MovieSchedCreate, db:Session):
         date = movies_data.date,
         available_seat = movies_data.available_seat,
         total_seat = movies_data.total_seat,
-        room_info = movies_data.room_info,
         movieId = movies_data.movieId,
         cinemaId = movies_data.cinemaId
         )

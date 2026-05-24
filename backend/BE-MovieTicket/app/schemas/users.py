@@ -16,6 +16,7 @@ class PaymentCreate(PaymentBase):
 class PaymentOp(PaymentBase):
     id: str
     userId: str
+    created_at: datetime
     class Config:
         from_attributes = True
         
@@ -43,6 +44,7 @@ class User(UserBase):
     id: str
     is_active: bool
     created_at: datetime
+    delete_exp: datetime
     paymentOption: List[PaymentOp] = []
     class Config:
         from_attributes = True

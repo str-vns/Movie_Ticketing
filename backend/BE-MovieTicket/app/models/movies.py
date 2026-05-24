@@ -1,7 +1,6 @@
 from sqlalchemy import Column, String, DateTime, func, Boolean, Float, Integer, ForeignKey
 from app.db.database import Base
 from sqlalchemy.dialects.postgresql import UUID
-import app.models.cinemas as Mcinemas
 import uuid
 
 class Movies(Base):
@@ -14,6 +13,7 @@ class Movies(Base):
     duration = Column(String, nullable=False)
     release = Column(String, nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+    delete_exp = Column(DateTime(timezone=True))
     is_delete = Column(Boolean, default=False)
     
 class MoviesSched(Base):
@@ -21,15 +21,14 @@ class MoviesSched(Base):
     
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4 )
     start_time = Column(String, nullable=False)
-    end_time = Column(String, nullable=False)
     price = Column(Float, nullable=False)
     available_seat = Column(Integer, nullable=False)
-    total_seat = Column(Integer, nullable=False)
-    room_info = Column(String, nullable=False)
+    total_seat = Column(Integer, nullable=False)  
     date = Column(String, nullable=False)
     movieId = Column(UUID(as_uuid=True), ForeignKey("movies.id"))
-    cinemaId = Column(UUID(as_uuid=True), ForeignKey("cinemas.id"))
+    roomId = Column(UUID(as_uuid=True), ForeignKey("rooms.id"))
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+    delete_exp = Column(DateTime(timezone=True))
     is_delete = Column(Boolean, default=False)
     
     
