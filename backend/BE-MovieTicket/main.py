@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends
 from functools import lru_cache
-from app.routes import movies, users, login
+from app.routes import movies, users, login, cinemas
 from app.db.database import Base, engine
 from app.core import config, security, limiter
 
@@ -20,4 +20,5 @@ security.setup_http(app)
 app.include_router(movies.router)
 app.include_router(users.router)
 app.include_router(login.router)
+app.include_router(cinemas.router)
     

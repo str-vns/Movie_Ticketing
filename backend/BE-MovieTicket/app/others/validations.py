@@ -45,3 +45,32 @@ def ExsistingMoviesValidation(existing_movie, type):
             status_code=400,
             detail="Movies does Exist"
         )
+        
+def ExsistingCinemasValidation(existing_cinema, type):
+    
+    if not existing_cinema and type == "DE":
+        raise HTTPException(
+            status_code=400,
+            detail="Cinemas doesn't exist"
+        )
+        
+    elif existing_cinema and type == "D":
+        raise HTTPException(
+            status_code=400,
+            detail="Cinemas does exist"
+        )
+
+def ExsistingSchedMovieValidation(existing_sched, type):
+    
+    if not existing_sched and type == "DE":
+        raise HTTPException(
+            status_code=400,
+            detail="Movie Schedule doesn't exist"
+        )
+        
+    elif existing_sched and type == "D":
+        raise HTTPException(
+            status_code=400,
+            detail="Movie Schedule does exist"
+        )
+                
