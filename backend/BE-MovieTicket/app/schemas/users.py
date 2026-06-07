@@ -44,7 +44,7 @@ class User(UserBase):
     id: str
     is_active: bool
     created_at: datetime
-    delete_exp: datetime
+    delete_exp: Optional[datetime] = None
     paymentOption: List[PaymentOp] = []
     class Config:
         from_attributes = True

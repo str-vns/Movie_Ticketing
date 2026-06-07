@@ -63,13 +63,11 @@ def get_singleMovieSched(uId: UUID, db:Session, skip, limit):
 def create_movieSched(movies_data: MSchemas.MovieSchedCreate, db:Session):
     new_movieSched = models.MoviesSched(
         start_time = movies_data.start_time,
-        end_time = movies_data.end_time,
         price = movies_data.price,
         date = movies_data.date,
         available_seat = movies_data.available_seat,
         total_seat = movies_data.total_seat,
         movieId = movies_data.movieId,
-        cinemaId = movies_data.cinemaId
         )
     
     db.add(new_movieSched)

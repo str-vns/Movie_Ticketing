@@ -8,7 +8,7 @@ class RoomsCreate(BaseModel):
     cinemaId: UUID
     status: str
     
-class RoomsUpdate(RoomsCreate):
+class RoomsUpdate(BaseModel):
      roomInfo: Optional[str] = None
      status: Optional[str] = None
      
@@ -18,7 +18,7 @@ class RoomsDelete(BaseModel):
 class RoomsBase(RoomsCreate):
     id: UUID
     created_at: datetime
-    delete_exp: datetime
+    delete_exp: Optional[datetime] = None
     is_delete: bool
     class Config:
         from_attributes = True
@@ -30,6 +30,8 @@ class CinemasCreate(BaseModel):
       cinemaOpen: time
       cinemaClose: time
       cinemaSched: str
+      cinema_x: str
+      cinema_y: str
       
 class CinemasUpdate(CinemasCreate):
     cinemaName: Optional[str] = None
@@ -37,6 +39,8 @@ class CinemasUpdate(CinemasCreate):
     cinemaOpen: Optional[time] = None
     cinemaClose: Optional[time] = None 
     cinemaSched: Optional[str] = None
+    cinema_x: Optional[str] = None
+    cinema_y: Optional[str] = None
 
 class CinemasDelete(BaseModel):
     message: str
@@ -44,7 +48,7 @@ class CinemasDelete(BaseModel):
 class CinemasOut(CinemasCreate):
     id: str
     created_at: datetime
-    delete_exp: datetime
+    delete_exp: Optional[datetime] = None
     is_delete: bool
     class Config:
         from_attributes = True

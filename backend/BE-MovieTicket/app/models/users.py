@@ -16,7 +16,7 @@ class Users(Base):
     role = Column(String, default="consumer")
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
-    delete_exp = Column(DateTime(timezone=True))
+    # delete_exp = Column(DateTime(timezone=True))
     paymentOp = relationship("PaymentOption", back_populates="userInfo")
 
 class PaymentOption(Base):

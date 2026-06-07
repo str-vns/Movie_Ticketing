@@ -73,4 +73,17 @@ def ExsistingSchedMovieValidation(existing_sched, type):
             status_code=400,
             detail="Movie Schedule does exist"
         )
-                
+            
+def ExsistingRoomsValidation(existing_sched, type):
+    
+    if not existing_sched and type == "DE":
+        raise HTTPException(
+            status_code=400,
+            detail="Movie Schedule doesn't exist"
+        )
+        
+    elif existing_sched and type == "D":
+        raise HTTPException(
+            status_code=400,
+            detail="Movie Schedule does exist"
+        )    

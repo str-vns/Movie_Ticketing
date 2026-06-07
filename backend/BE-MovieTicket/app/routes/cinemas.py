@@ -27,6 +27,21 @@ def update_cinema(
     return services_cinema.update_cinemas(db, uId, cinema_data)
 
 @router.delete("/{uId}", response_model=schema_cinema.CinemasDelete)
-def delete_einema(uId: UUID, db: Session = Depends(get_db), current_user: model_users.Users = Depends(AUTH.get_current_user)):
+def delete_cinema(uId: UUID, db: Session = Depends(get_db), current_user: model_users.Users = Depends(AUTH.get_current_user)):
     return services_cinema.delete_einema(uId, db)  
 
+@router.get("/rooms", response_model=list[schema_cinema.RoomsBase])
+def read_room(db: Session = Depends(get_db), skip=0, limit=10):
+    return services_cinema.get_rooms(db, skip, limit)
+
+@router.post("/rooms", response_model=schema_cinema.RoomsCreate)
+def create_room(rooms_data:  schema_cinema.RoomsCreate, db: Session = Depends(get_db) ):
+    return services_cinema.create_rooms(rooms_data, db)
+
+@router.patch("/{uId}/rooms", response_model=schema_cinema.RoomsUpdate)
+def update_room(uId: UUID, update_rooms: schema_cinema.RoomsUpdate, db: Session = Depends(get_db) ):
+    return services_cinema.update_rooms(uId, update_rooms, db)
+
+@router.delete("/{uId}/rooms", response_model=schema_cinema.RoomsDelete)
+def delete_cinema(uId: UUID, db: Session = Depends(get_db)):
+    return services_cinema.delete_rooms(uId, db)

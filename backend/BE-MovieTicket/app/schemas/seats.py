@@ -17,7 +17,7 @@ class seatSchedsDelete(BaseModel):
 class seatSchedBase(seatSchedsCreate):
     id: UUID
     created_at: datetime
-    delete_exp: datetime
+    delete_exp: Optional[datetime] = None
     is_delete: bool
     
     class Config:
@@ -43,7 +43,7 @@ class seatsDelete(BaseModel):
 class seatsBase(seatsCreate):
       id: UUID
       created_at: datetime
-      delete_exp: datetime
+      delete_exp: Optional[datetime] = None
       is_delete: bool   
       
       class Config:
